@@ -6,7 +6,6 @@
 			v-for="big of product.cate_list"
 			:key="'big'+big.cate_id"
 			@mouseover="big_hover(big)">{{big.cate_name}}
-			
 			<div style=" width: 810px; height: 490px;" 
 			class="px-3 border-box text-secondary px-3 py-2 position-absolute cate bg-white box-shadow"
 			v-show="big ==product.select_big_category">
