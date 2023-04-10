@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # atstudy-mall
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# atstudy-mall
+>>>>>>> fdd011cd5d08759d304191d4f96c555871e91605
