@@ -2,7 +2,6 @@
 <div class="d-flex container position-relative">
 	<div class="w-17 box-shadow mr-2 ml-1 border-box rounded p-3 text-xs text-secondary">
 		<div class="my-2">
-			
 			<div class="text-hover-red text-secondary my-1 text-sm"
 			v-for="big of product.cate_list"
 			:key="'big'+big.cate_id"
