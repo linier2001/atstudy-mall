@@ -1,27 +1,29 @@
 <template>
 <div class="d-flex container position-relative">
 	<div class="w-17 box-shadow mr-2 ml-1 border-box rounded p-3 text-xs text-secondary">
-		<div class="my-2">
-			<div class="text-hover-red text-secondary my-1 text-sm"
-			v-for="big of product.cate_list"
-			:key="'big'+big.cate_id"
-			@mouseover="big_hover(big)">{{big.cate_name}}
-			<div style=" width: 810px; height: 490px;" 
-			class="px-3 border-box text-secondary px-3 py-2 position-absolute cate bg-white box-shadow"
-			v-show="big ==product.select_big_category">
-				<div class="d-flex align-items-start"
-				v-for="mid of big.children"
-				:key="'mid' + mid.cate_id">
-					<div class="mr-3 my-2 d-flex  w-10">{{mid.cate_name}}></div>
-						<div class="d-flex flex-wrap w-90">
-						<div class="mx-1 my-2 text-hover-red "
-						v-for="mind of mid.children"
-						:key="'mind' + mind.cate_id">{{mind.cate_name}}</div>
-						</div>
+	<div class="my-2">
+		<div class="text-hover-red text-secondary my-1 text-sm hand"
+		v-for="big of product.cate_list"
+		:key="'big'+big.cate_id"
+		@mouseover="big_hover(big)">{{big.cate_name}}
+		<div style=" width: 810px; height: 490px;" 
+		class="px-3 border-box text-secondary px-3 py-2 position-absolute cate bg-white box-shadow"
+		v-show="big ==product.select_big_category">
+			<div class="d-flex align-items-start"
+			v-for="mid of big.children"
+			:key="'mid' + mid.cate_id">
+				<div class="mr-3 my-2 d-flex  w-10">{{mid.cate_name}}></div>
+					<div class="d-flex flex-wrap w-90">
+						
+					<router-link to="/SpuList" class="mx-1 my-2 text-hover-red hand text-secondary text-decoration-none"
+					v-for="small of mid.children"
+					:key=" 'small' + small.cate_id"
+					@click="category_clicked(small)">{{small.cate_name}}</router-link>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 		</div>
 		
 	<div class="w-66 mr-2 ml-1 overflow-hidden position-relative mr-2">
@@ -70,11 +72,17 @@
 				"getCategoryList" : 'product/get_cate_list'
 			}),
 			...mapMutations({
-				"big_hover" : 'product/big_cate_hover'
+				"big_hover" : 'product/big_cate_hover',
+				'category_clicked' : 'product/category_clicked'
 			}),
 			carousel_clicked(x){
 				this.website.carousel_index = x
+			},
+			
+			category_click(x){
+				this.category_clicked(x)
 			}
+			
 		},
 		mounted() {
 		this.getCategoryList(' ')

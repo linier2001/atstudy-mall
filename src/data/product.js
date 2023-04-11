@@ -23,7 +23,7 @@ export const getCategory = id =>get(RESOURCE_CATEGORY,id)
 export const getCategoryList = data =>get(RESOURCE_CATEGORY,data)
 
 //擦汗寻商品参数的方法
-export const getAttr = data =>get(RESOURCE_ATTR,data)
+export const getAttrList = data =>get(RESOURCE_ATTR,data)
 
 //查询单个商品spu
 export const getSpu = id =>get(RESOURCE_SPU,id)

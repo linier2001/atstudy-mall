@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Index from '@/components/Index.vue'
+import SpuList from '@/components/SpuList.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Index',
     component: Index
+  }, {
+    path: '/SpuList',
+    name: 'spilist',
+    component: SpuList
   },
+
 
 ]
 
