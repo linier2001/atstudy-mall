@@ -8,7 +8,8 @@ export default {
 	selected_category : undefined,
 	attr_list : [],
 	select_attr_list : [],
-	select_attr_str_list : ''
+	select_attr_str_list : '',
+	spu_list: []
   },
   
   mutations: {
@@ -60,7 +61,8 @@ actions: {
 				lenght:10
 			
 		}).then(response => {
-			console.log(response);
+			context.state.spu_list = response.data.data
+			console.log(context.state.spu_list);
 		})
 	},
 	

@@ -17,12 +17,17 @@
 		</div>
 	</div>
 </div>
-<Spu></Spu>
+
+
+<div class="container mt-5">
+<Spu-list :data="product.spu_list"></Spu-list>
+</div>
+
 </template>
 
 <script>
 		import {mapActions, mapState,mapMutations} from 'vuex'
-		import Spu from '@/components/Spu.vue'
+	import Spu_list from '@/components/Spu_list.vue'
 		export default{
 			computed :{
 				...mapState(['product'])
@@ -44,7 +49,7 @@
 				this.getSpuList()
 			},
 			components:{
-				Spu
+			'Spu-list':Spu_list
 			}
 			
 			
