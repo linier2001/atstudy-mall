@@ -9,7 +9,9 @@ export default {
 	attr_list : [],
 	select_attr_list : [],
 	select_attr_str_list : '',
-	spu_list: []
+	spu_list: [],
+	start:0,
+	lenght:10
   },
   
   mutations: {
@@ -21,10 +23,18 @@ export default {
 		
 	},
 	attr_clicked(context,payload){
+		context.select_attr_str_list=''
 		context.select_attr_list[payload.index] =  payload.attr
-		console.log(context.select_attr_list[payload.index])
-		
-	}
+	
+		for(let attr of context.select_attr_list){
+			if (attr != undefined){
+				context.select_attr_str_list += attr.id +','
+			}
+		}
+	context.select_attr_str_list= context.select_attr_str_list.substring(0,context.select_attr_str_list.length-1)
+		this.dispatch('product/get_spu_list')
+	},
+	
   },
 actions: {
 	get_cate_list(context){
@@ -56,9 +66,9 @@ actions: {
 				spu_title:'',
 				spu_status: 1,
 				cate_id : context.state.selected_category.cate_id,
-				vauleList:context.state.select_attr_str_list,
-				start:0,
-				lenght:10
+				valueList : context.state.select_attr_str_list,
+				start:context.state.start,
+				lenght:context.state.lenght
 			
 		}).then(response => {
 			context.state.spu_list = response.data.data
