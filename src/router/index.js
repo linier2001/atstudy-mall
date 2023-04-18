@@ -8,7 +8,7 @@ const routes = [
     name: 'Index',
     component: Index
   }, {
-    path: '/SpuList',
+    path: '/spuList',
     name: 'spilist',
     component: SpuList
   },

@@ -11,7 +11,8 @@ export default {
 	select_attr_str_list : '',
 	spu_list: [],
 	start:0,
-	lenght:10
+	lenght:10,
+	keyWord:'',
   },
   
   mutations: {
@@ -46,7 +47,7 @@ actions: {
 	get_attr_list(context){
 
 		getAttrList({
-		cate_id : context.state.selected_category.cate_id,
+		cate_id : context.state.selected_category==undefined ? null:context.state.selected_category.cate_id,
 		key_issku : 0,
 		key_ishigh: 0	
 		}
@@ -62,10 +63,10 @@ actions: {
 	},
 	get_spu_list(context){
 		getSpuList({
-				spu_name: '',
+				spu_name: context.state.keyWord == '' ? '' :context.state.keyWord,
 				spu_title:'',
 				spu_status: 1,
-				cate_id : context.state.selected_category.cate_id,
+				cate_id : context.state.selected_category==undefined ? null:context.state.selected_category.cate_id,
 				valueList : context.state.select_attr_str_list,
 				start:context.state.start,
 				lenght:context.state.lenght
