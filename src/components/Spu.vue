@@ -11,7 +11,7 @@
 		style='width:30px'>
 				
 			</div>
-			<div class="text-bolder text-red text-lg mt-2">$1999	</div>
+			<div class="text-bolder text-red text-lg mt-2">${{spuPrice}}	</div>
 			<div class="text-secondary textsm mt-2">{{data.spu_name}}	</div>
 	</div>
 </template>
@@ -21,13 +21,24 @@
 		props :['data'],
 		data() {
 			return{
-				select_img:this.data.attrKeyList[0].attrValueList[0].value_images[0]
+				select_img:this.data.attrKeyList[0].attrValueList[0].value_images[0],
+				spuPrice:0
+				
 			}
 		},
 		methods:{
 			img_click(x){
 				this.select_img=x
 			}
+		},
+		mounted(){
+			let index = 0;
+			for (let i=0 ;i<= this.data.skuList.length -1 ;i++){
+				if(this.data.skuList.sku_price < this.data.skuList[index]){
+					index=i
+				}
+			}
+			this.spuPrice=this.data.skuList[index].sku_price
 		}
 		
 		}

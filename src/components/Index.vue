@@ -60,10 +60,12 @@
 	
 </div>
 
-<div class="container mt-5">
-	<div class="box-shadow text-lg text-bolder w-15 rounded-right-xl rounded-left-lg px-3 py-2 text-muted">电视</div>
-	<div></div>
-	<Spu-list></Spu-list>
+<div class="container mt-5"
+v-for="spuList of product.special_spu_list"
+:key="spuList.data.categoryList[0].cate_id">
+	<div class="box-shadow text-lg text-bolder w-15 rounded-right-xl rounded-left-lg px-3 py-2 text-muted">{{spuList.data.categoryList[0].cate_name}}专场</div>
+	<Spu-list
+	:data="spuList.data.data"></Spu-list>
 </div>
 
 

@@ -14,7 +14,7 @@ export default {
 	lenght:10,
 	keyWord:'',
 	category_list:[],
-	cate_id_list:[130,30,19,219],
+	cate_id_list:[130,34,20,219],
 	special_spu_list:[]
   },
   
@@ -91,21 +91,22 @@ actions: {
 		})
 	},
 get_special_list(context){
-		for( let id of context.state.cate_id_list){
+		for( let i=0; i <= context.state.cate_id_list.length-1; i++){
 		getSpuList({	spu_name: '',
 					spu_title:'',
 					spu_status: 1,
-					cate_id : id,
+					cate_id : context.state.cate_id_list[i],
 					valueList :[],
 					start:0,
 					lenght:5,
 					})
 					.then(response => {
-					console.log(response)
+				context.state.special_spu_list[i] = response
+			
 					})
 		}
 	
-	
+	console.log(context.state.special_spu_list)
 	
   },
  
