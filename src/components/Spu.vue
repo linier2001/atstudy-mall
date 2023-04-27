@@ -5,7 +5,7 @@
 		<img v-for="img of data.attrKeyList[0].attrValueList"
 		:key="'img' + img.value_id"
 		:src="'http://localhost:8001/img/'+img.value_images[0]"
-		class = ' mx-1 ' 
+		class = ' mx-1 hand' 
 		:class="{'border-red':img.value_images[0] == select_img}"
 		@click="img_click(img.value_images[0])"
 		style='width:30px'>

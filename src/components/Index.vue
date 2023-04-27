@@ -59,21 +59,37 @@
 	</div>
 	
 </div>
+
+<div class="container mt-5">
+	<div class="box-shadow text-lg text-bolder w-15 rounded-right-xl rounded-left-lg px-3 py-2 text-muted">电视</div>
+	<div></div>
+	<Spu-list></Spu-list>
+</div>
+
+
 </template>
 
 <script>
 	import {mapState,mapActions,mapMutations} from 'vuex'
+	import Spu_list from '@/components/Spu_list.vue'
 	export default{
 		computed :{
 			...mapState(['website','product'])
 		},
 		methods:{
+			
+		
+			
 			...mapActions({
-				"getCategoryList" : 'product/get_cate_list'
+				"getCategoryList" : 'product/get_cate_list',
+				"getList" : 'product/get_special_list',
+				
+				
 			}),
 			...mapMutations({
 				"big_hover" : 'product/big_cate_hover',
-				'category_clicked' : 'product/category_clicked'
+				'category_clicked' : 'product/category_clicked',
+				
 			}),
 			carousel_clicked(x){
 				this.website.carousel_index = x
@@ -86,6 +102,10 @@
 		},
 		mounted() {
 		this.getCategoryList(' ')
+		this.getList()
+		},
+		components:{
+			'Spu-list':Spu_list
 		}
 		
 		

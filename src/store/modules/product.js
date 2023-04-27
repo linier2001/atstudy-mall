@@ -13,9 +13,18 @@ export default {
 	start:0,
 	lenght:10,
 	keyWord:'',
+	category_list:[],
+	cate_id_list:[130,30,19,219],
+	special_spu_list:[]
   },
   
   mutations: {
+	spu_category_clicked(context,payload){
+		context.selected_category = payload
+		this.dispatch('product/get_spu_list')
+		this.dispatch('product/get_attr_list')
+		
+	},
 	big_cate_hover(context,payload){
 		context.select_big_category = payload
 	},
@@ -38,6 +47,7 @@ export default {
 	
   },
 actions: {
+	
 	get_cate_list(context){
 	
 	getCategoryList({pid : ''}).then(response =>{
@@ -73,9 +83,32 @@ actions: {
 			
 		}).then(response => {
 			context.state.spu_list = response.data.data
+			if(context.state.category_list.length==0 ){
+				context.state.category_list = response.data.categoryList
+			}
+			
 			console.log(context.state.spu_list);
 		})
 	},
+get_special_list(context){
+		for( let id of context.state.cate_id_list){
+		getSpuList({	spu_name: '',
+					spu_title:'',
+					spu_status: 1,
+					cate_id : id,
+					valueList :[],
+					start:0,
+					lenght:5,
+					})
+					.then(response => {
+					console.log(response)
+					})
+		}
+	
+	
+	
+  },
+ 
 	
   },
  
